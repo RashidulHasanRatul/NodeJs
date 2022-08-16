@@ -1,0 +1,8 @@
+node_modules 
+*.xlsx
+*.xls
+*.docx
+*.doc
+*.pptx
+*.ppt
+*.txt
