@@ -6,7 +6,6 @@ const cors = require("cors");
 app.use(cors());
 const url =
   "https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=6b743cb653f5a9be6c374e981242247d";
-
 app.get("/weather", (req, res) => {
   // if(!req.query.id){
   //   res.send({error:"you must need ID"})
