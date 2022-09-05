@@ -3,32 +3,23 @@ const { MongoClient, ObjectId } = require("mongodb");
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "CRUD-Mongo";
 
-// connect to the database
 MongoClient.connect(
   connectionURL,
-  { useNewUrlParser: true }, 
+  { useNewUrlParser: true },
   (error, client) => {
     if (error) {
       return console.log("Unable to connect to database!");
     }
     console.log("Connected correctly!");
     const db = client.db(databaseName);
-    // FInd one
-    db.collection("users").findOne(
-      { name: "Rashidul Hasan Ratul" },
-      (error, user) => {
-        if (error) {
-          return console.log("Unable to fetch");
-        }
-        console.log(user);
-      }
-    );
-
-    // Find many
+    // Delete Many
     db.collection("users")
-      .find({ age: 23 })
-      .toArray((error, users) => {
-        console.log(users);
+      .deleteMany({ age: 25 })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 );
