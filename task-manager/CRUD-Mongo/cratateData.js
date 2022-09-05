@@ -56,5 +56,26 @@ MongoClient.connect(
         console.log(result.insertedId);
       }
     );
+
+    // insert multiple users
+    db.collection("users").insertMany(
+      [
+        {
+          name: "Rahim",
+          age: 25,
+        },
+        {
+          name: "Karim",
+          age: 25,
+        },
+      ],
+      (err, result) => {
+        if (err) {
+          return console.log("Unable to insert user");
+        }
+        console.log("Data inserted successfully!");
+        console.log(result.insertedId);
+      }
+    );
   }
 );
