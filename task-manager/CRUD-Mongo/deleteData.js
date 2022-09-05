@@ -3,6 +3,28 @@ const { MongoClient, ObjectId } = require("mongodb");
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "CRUD-Mongo";
 
+// MongoClient.connect(
+//   connectionURL,
+//   { useNewUrlParser: true },
+//   (error, client) => {
+//     if (error) {
+//       return console.log("Unable to connect to database!");
+//     }
+//     console.log("Connected correctly!");
+//     const db = client.db(databaseName);
+//     // Delete Many
+//     db.collection("users")
+//       .deleteMany({ age: 25 })
+//       .then((result) => {
+//         console.log(result);
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   }
+// );
+
+// Delete One
 MongoClient.connect(
   connectionURL,
   { useNewUrlParser: true },
@@ -14,7 +36,7 @@ MongoClient.connect(
     const db = client.db(databaseName);
     // Delete Many
     db.collection("users")
-      .deleteMany({ age: 25 })
+      .deleteOne({ _id: new ObjectId("6314fd7f50d791f91b753f56") })
       .then((result) => {
         console.log(result);
       })
