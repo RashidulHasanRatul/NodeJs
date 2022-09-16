@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const Task = mongoose.model("tasks", {
+const taskSchema = new mongoose.Schema({
   tittle: {
     type: String,
     required: true,
@@ -17,5 +17,15 @@ const Task = mongoose.model("tasks", {
     default: false,
   },
 });
+
+taskSchema.pre("save", async function (next) {
+  const task = this;
+  if (task.isModified("completed")) {
+    task.completed = await task.completed;
+  }
+  next();
+});
+
+const Task = mongoose.model("tasks", taskSchema);
 
 module.exports = Task;

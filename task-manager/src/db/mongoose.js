@@ -4,6 +4,7 @@ const connectionURL = "mongodb://127.0.0.1:27017/task-manager-api";
 // connect to the database
 mongoose.connect(connectionURL, {
   useNewUrlParser: true,
+
 });
 
 // // Create a Instance of User Model
